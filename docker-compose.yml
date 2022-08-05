@@ -1,0 +1,31 @@
+version: '3.5'
+services:
+  postgres:
+    image: 'postgres:9.6'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - 'postgres_data:/var/lib/postgresql/data'
+  web:
+    depends_on:
+      - 'postgres'
+    build:
+      context: .
+    ports:
+      - '3000:3000'
+    command: docker/entrypoint.sh
+    stdin_open: true
+    tty: true
+    volumes:
+      - '.:/projeto'
+      - bundle:/bundle
+      - cache:/cache
+    env_file:
+      - '.env.docker'
+volumes:
+  postgres_data:
+  bundle:
+  cache:
