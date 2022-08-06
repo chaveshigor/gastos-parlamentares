@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Legislature, type: :model do
   describe 'associations' do
-    #it { should belong_to(:category).class_name('MenuCategory') }
     it { should have_many(:politicians) }
   end
 

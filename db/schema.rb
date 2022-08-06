@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,28 +12,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_05_235114) do
-
+ActiveRecord::Schema.define(version: 20_220_805_235_114) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "legislatures", force: :cascade do |t|
-    t.string "year"
-    t.string "code"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'legislatures', force: :cascade do |t|
+    t.string 'year'
+    t.string 'code'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table "politicians", force: :cascade do |t|
-    t.string "name"
-    t.string "cpf"
-    t.string "registration_id"
-    t.string "wallet"
-    t.string "uf"
-    t.bigint "legislature_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["legislature_id"], name: "index_politicians_on_legislature_id"
+  create_table 'politicians', force: :cascade do |t|
+    t.string 'name'
+    t.string 'cpf'
+    t.string 'registration_id'
+    t.string 'wallet'
+    t.string 'uf'
+    t.bigint 'legislature_id'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['legislature_id'], name: 'index_politicians_on_legislature_id'
   end
-
 end
