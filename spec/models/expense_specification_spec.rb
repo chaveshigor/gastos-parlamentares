@@ -2,9 +2,9 @@
 
 require 'rails_helper'
 
-RSpec.describe ExpenseType, type: :model do
+RSpec.describe ExpenseSpecification, type: :model do
   describe 'associations' do
-    it { should have_one(:expense_specification) }
+    it { should belong_to(:expense_type) }
   end
 
   describe 'validations' do

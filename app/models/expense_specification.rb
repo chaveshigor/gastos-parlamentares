@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class ExpenseType < ApplicationRecord
-  has_one :expense_specification
+class ExpenseSpecification < ApplicationRecord
+  belongs_to :expense_type
 
   validates_presence_of :description
   validates_uniqueness_of :code
