@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe ExpenseSpecification, type: :model do
   describe 'associations' do
-    it { should belong_to(:expense_type) }
+    it { should belong_to(:expense_type).optional }
   end
 
   describe 'validations' do
