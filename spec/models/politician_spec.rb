@@ -7,6 +7,8 @@ RSpec.describe Politician, type: :model do
 
   describe 'associations' do
     it { should belong_to(:legislature) }
+    it { should belong_to(:political_party) }
+    it { should have_many(:expenses) }
   end
 
   describe 'validations' do
