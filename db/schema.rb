@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_06_021403) do
+ActiveRecord::Schema.define(version: 2022_08_06_022340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,13 @@ ActiveRecord::Schema.define(version: 2022_08_06_021403) do
     t.bigint "political_party_id", null: false
     t.index ["legislature_id"], name: "index_politicians_on_legislature_id"
     t.index ["political_party_id"], name: "index_politicians_on_political_party_id"
+  end
+
+  create_table "providers", force: :cascade do |t|
+    t.string "name"
+    t.string "cnpj_cpf"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "politicians", "political_parties"
