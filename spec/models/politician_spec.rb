@@ -3,11 +3,15 @@
 require 'rails_helper'
 
 RSpec.describe Politician, type: :model do
+  let!(:politician) { create(:politician, :with_legislature, :with_political_party) }
+
   describe 'associations' do
     it { should belong_to(:legislature) }
   end
 
   describe 'validations' do
+    subject { politician }
+
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:uf) }
     it { should validate_uniqueness_of(:cpf).ignoring_case_sensitivity }
