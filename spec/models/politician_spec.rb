@@ -20,4 +20,10 @@ RSpec.describe Politician, type: :model do
     it { should validate_uniqueness_of(:registration_id).ignoring_case_sensitivity }
     it { should validate_uniqueness_of(:wallet).ignoring_case_sensitivity }
   end
+
+  describe '#picture' do
+    it 'return politician picture url' do
+      expect(politician.picture).to eq("https://www.camara.leg.br/internet/deputado/bandep/#{politician.registration_id}.jpg")
+    end
+  end
 end
