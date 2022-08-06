@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 require 'cpf_faker'
-require 'faker'
 
 RSpec.describe CsvUploads::StoreDataService do
   let(:run_service) { described_class.new.run(params) }
