@@ -8,7 +8,9 @@ class Expense < ApplicationRecord
   enum document_type: {
     'Nota Fiscal': 0,
     'Recibo': 1,
-    'Despesa no Exterior': 2
+    'Despesa no Exterior': 2,
+    'Viagem / Hospedagem': 3,
+    'Nota Fiscal Eletrônica': 4
   }
 
   validates_presence_of :document_number, :document_type, :generation_date, :document_value,
