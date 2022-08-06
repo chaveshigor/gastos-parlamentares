@@ -30,4 +30,6 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  csv_uploads:
+    upload_error_message: 'Invalid file. The file needs to be a csv file!'
+    upload_success_message: 'Success!!! Now you need to wait some minutes, your file are being proccessed by the system!'
