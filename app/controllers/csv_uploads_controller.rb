@@ -5,7 +5,7 @@ class CsvUploadsController < ApplicationController
 
   def uploader
     file = upload_params[:csv_file]
-    
+    CsvUploads::StoreDataService.new(file: file).run
   end
 
   private
