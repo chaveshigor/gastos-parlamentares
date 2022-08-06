@@ -5,7 +5,12 @@ class CsvUploadsController < ApplicationController
 
   def uploader
     file = upload_params[:csv_file]
-    CsvUploads::StoreDataService.new(file: file).run
+    result = CsvUploads::CsvHandlerService.new(file: file).run
+
+    flash[:alert] = t('csv_uploads.upload_error_message') unless result
+    flash[:notice] = t('csv_uploads.upload_success_message') if result
+
+    redirect_to csv_uploads_path
   end
 
   private
