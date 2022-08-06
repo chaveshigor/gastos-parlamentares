@@ -6,4 +6,8 @@ Rails.application.routes.draw do
       post 'uploader'
     end
   end
+
+  resources :politicians, only: %i[index show]
+
+  root to: 'politicians#index'
 end
