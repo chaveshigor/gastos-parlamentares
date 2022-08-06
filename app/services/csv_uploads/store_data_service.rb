@@ -20,9 +20,9 @@ module CsvUploads
         create_expense_type
         create_expense_specification
         create_expense
-      rescue StandardError => e
-        puts e
       end
+    rescue StandardError => e
+      puts e
     end
 
     def create_legislature
