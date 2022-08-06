@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_06_022340) do
+ActiveRecord::Schema.define(version: 2022_08_06_024918) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,32 @@ ActiveRecord::Schema.define(version: 2022_08_06_022340) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "expenses", force: :cascade do |t|
+    t.string "document_number"
+    t.integer "document_type"
+    t.date "generation_date"
+    t.decimal "document_value"
+    t.string "document_url"
+    t.decimal "gloss_value"
+    t.decimal "net_value"
+    t.integer "month"
+    t.integer "year"
+    t.integer "installment_number"
+    t.string "passanger_name"
+    t.string "travel_stretch"
+    t.string "lot_number"
+    t.string "reimbursement_number"
+    t.decimal "reimbursement_amount"
+    t.bigint "politician_id"
+    t.bigint "expense_type_id"
+    t.bigint "provider_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["expense_type_id"], name: "index_expenses_on_expense_type_id"
+    t.index ["politician_id"], name: "index_expenses_on_politician_id"
+    t.index ["provider_id"], name: "index_expenses_on_provider_id"
   end
 
   create_table "legislatures", force: :cascade do |t|
