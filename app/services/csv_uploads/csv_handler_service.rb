@@ -32,7 +32,6 @@ module CsvUploads
 
       true
     rescue CSV::MalformedCSVError
-      p 'ERROOOOOOOOOOOOOOOOOOOOOOOOOOO'
       false
     end
 
