@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :uploads, only: [:index] do
+  resources :csv_uploads, only: [:index] do
     collection do
       post 'uploader'
     end
