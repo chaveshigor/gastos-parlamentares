@@ -1,9 +1,8 @@
-<% web_pool_size = (ENV['DATABASE_POOL'] || ENV['RAILS_MAX_THREADS'] || 5).to_i %>
 
 default: &default
   adapter: postgresql
-  encoding: utf8
-  pool: <%= web_pool_size %>
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
