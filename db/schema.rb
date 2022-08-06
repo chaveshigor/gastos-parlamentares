@@ -10,9 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2022_08_05_235114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "legislatures", force: :cascade do |t|
+    t.string "year"
+    t.string "code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "politicians", force: :cascade do |t|
+    t.string "name"
+    t.string "cpf"
+    t.string "registration_id"
+    t.string "wallet"
+    t.string "uf"
+    t.bigint "legislature_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["legislature_id"], name: "index_politicians_on_legislature_id"
+  end
 
 end
