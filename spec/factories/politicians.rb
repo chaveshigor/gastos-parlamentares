@@ -10,16 +10,12 @@ FactoryBot.define do
     registration_id { Random.rand(10**5).to_s }
     wallet { Random.rand(10**5).to_s }
     uf { 'RJ' }
+    legislature { build(:legislature) }
+    political_party { build(:political_party) }
 
-    trait :with_legislature do
+    trait :with_expenses do
       after(:build) do |politician|
-        politician.legislature = build(:legislature)
-      end
-    end
-
-    trait :with_political_party do
-      after(:build) do |politician|
-        politician.political_party = build(:political_party)
+        politician.expenses = build_list(:expense, 5)
       end
     end
   end

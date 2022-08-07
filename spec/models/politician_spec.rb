@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Politician, type: :model do
-  let!(:politician) { create(:politician, :with_legislature, :with_political_party) }
+  let!(:politician) { create(:politician) }
 
   describe 'associations' do
     it { should belong_to(:legislature) }
