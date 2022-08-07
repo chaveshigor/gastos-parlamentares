@@ -7,12 +7,18 @@
     display: flex;
     align-items: center;
     column-gap: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   a {
-    font-size: 26px;
     text-decoration: none;
     color: #efefef;
     font-weight: bold;
+  }
+  
+  .header-title {
+    font-size: 26px;
   }
 }

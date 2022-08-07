@@ -1,6 +1,8 @@
 <nav class='header'>
   <div class='header-info'>
-    <%=link_to 'Políticos RJ', politicians_path%>
-    <%=link_to 'Deletar dados', destroy_all_politicians_path, data: { confirm: 'Are you sure?' }, method: :delete%>
+    <%=link_to 'Políticos RJ', politicians_path, class: 'header-title'%>
+    <% if Politician.all.present? %>
+      <%=link_to 'Deletar dados', destroy_all_politicians_path, data: { confirm: 'Are you sure?' }, method: :delete, class: 'btn btn-danger delete-all'%>
+    <% end %>
   </div>
 </nav>
