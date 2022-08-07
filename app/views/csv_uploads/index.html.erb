@@ -1,4 +1,23 @@
-<%= form_with url: uploader_csv_uploads_path, multipart: true do |form| %>
-  <%= file_field_tag :csv_file, required: true %>
-  <%= form.submit %>
-<% end %>
+<%= render partial: 'shared/header' %>
+
+<div class='container-fluid p-5 d-flex flex-column justify-content-center align-items-center col-md-6'>
+  <p>Você já ouviu falar da CEAP? A Cota para o Exercício da Atividade Parlamentar, 
+  custeia as despesas do mandato, como passagens aéreas e conta de celular. Algumas são reembolsadas, 
+  como as com os Correios, e outras são pagas por débito automático, como a compra de passagens. 
+  Nos casos de reembolso, os deputados têm três meses para apresentar os recibos. O valor mensal 
+  não utilizado fica acumulado ao longo do ano. Por esse motivo, em alguns meses o valor gasto pode 
+  ser maior que a média mensal. (<a href='https://www2.camara.leg.br/transparencia/acesso-a-informacao/copy_of_perguntas-frequentes/cota-para-o-exercicio-da-atividade-parlamentar', target='_blank'>Fonte</a>)</P>
+  
+  <p>Através desse site, você pode visualizar de uma forma mais detalhada todos os gastos dos políticos do estado do Rio de Janeiro. Para isso, 
+  basta você fazer o download do arquivo no <a href='https://dadosabertos.camara.leg.br/swagger/api.html#staticfile' target='_blank'>Portal da Transparência</a> 
+  em formato CSV e, em seguida, fazer o upload desse arquivo no botão abaixo.</p>
+
+  <div class='mt-5'>
+    <%= form_with url: uploader_csv_uploads_path, multipart: true do |form| %>
+      <div class='border border-dark rounded p-2'>
+        <%= file_field_tag :csv_file, required: true %>
+        <%= form.submit 'Enviar', class: 'btn btn-dark' %>
+      </div>
+    <% end %>
+  </div>
+</div>
