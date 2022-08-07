@@ -8,7 +8,10 @@ class CsvUploadsController < ApplicationController
     result = CsvUploads::CsvHandlerService.new(file: file).run
 
     flash[:alert] = t('csv_uploads.upload_error_message') unless result
-    flash[:notice] = t('csv_uploads.upload_success_message') if result
+    if result
+      flash[:notice] = t('csv_uploads.upload_success_message')
+      return redirect_to politicians_path
+    end
 
     redirect_to csv_uploads_path
   end
