@@ -15,7 +15,7 @@ FactoryBot.define do
 
     trait :with_expenses do
       after(:build) do |politician|
-        politician.expenses = build_list(:expense, 5)
+        politician.expenses = build_list(:expense, 5, :with_passanger, :with_reimbursement)
       end
     end
   end
