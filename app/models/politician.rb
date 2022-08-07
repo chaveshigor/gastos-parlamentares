@@ -11,4 +11,8 @@ class Politician < ApplicationRecord
   def picture
     "https://www.camara.leg.br/internet/deputado/bandep/#{registration_id}.jpg"
   end
+
+  def total_expenses
+    expenses.pluck(:net_value).sum
+  end
 end
