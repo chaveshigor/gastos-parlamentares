@@ -32,4 +32,10 @@ RSpec.describe Politician, type: :model do
       expect(politician.total_expenses).to eq(politician.expenses.pluck(:net_value).sum)
     end
   end
+
+  describe '#biggest_expense' do
+    it 'return politician biggest expense' do
+      expect(politician.biggest_expense.net_value).to eq(politician.expenses.pluck(:net_value).max)
+    end
+  end
 end
