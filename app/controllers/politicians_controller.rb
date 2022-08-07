@@ -19,10 +19,9 @@ class PoliticiansController < ApplicationController
   end
 
   def destroy_all
-    result = Politicians::DeleteAllService.new.run
+    DestroyAllJob.perform_later
 
-    flash[:alert] = t('csv_uploads.destroy_error_message') unless result
-    flash[:notice] = t('csv_uploads.destroy_success_message') if result
+    flash[:notice] = t('csv_uploads.destroy_success_message')
 
     redirect_to csv_uploads_path
   end
