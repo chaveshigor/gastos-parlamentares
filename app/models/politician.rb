@@ -15,4 +15,8 @@ class Politician < ApplicationRecord
   def total_expenses
     expenses.pluck(:net_value).sum
   end
+
+  def biggest_expense
+    expenses.max_by(&:net_value)
+  end
 end
