@@ -17,6 +17,6 @@ class Politician < ApplicationRecord
   end
 
   def biggest_expense
-    expenses.max_by(&:net_value)
+    expenses.includes(:provider).max_by(&:net_value)
   end
 end
