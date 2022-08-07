@@ -1,0 +1,15 @@
+<img src='<%= @politician.picture %>'>
+
+<%= @politician.name %><br>
+Total: <%= format_currency(@politician.total_expenses) %><br>
+
+<% @expenses.each do |expense| %>
+  Liquido: <%= format_currency(expense.net_value) %> - 
+  Data de emissao: <%= expense.generation_date.strftime('%d/%m/%Y') %> - 
+  Fornecedor: <%= expense.provider.name.titleize %>
+  <% if expense.document_url.present? %>
+     - <%= link_to 'Boleto', expense.document_url, target: :_blank %>
+  <% end %>
+  <br>
+<% end %>
+

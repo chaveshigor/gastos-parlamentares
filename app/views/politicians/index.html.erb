@@ -1,0 +1,6 @@
+<% @politicians.each do |politician| %>
+  <img src='<%=politician.picture%>'><br>
+  
+  <%= link_to politician.name, politician_path(politician) %><br>
+  Gastos totais: <%=format_currency(politician.total_expenses)%><br>
+<% end %>
