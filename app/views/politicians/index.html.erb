@@ -1,6 +1,16 @@
-<% @politicians.each do |politician| %>
-  <img src='<%=politician.picture%>'><br>
-  
-  <%= link_to politician.name, politician_path(politician) %><br>
-  Gastos totais: <%=format_currency(politician.total_expenses)%><br>
-<% end %>
+<%= render partial: 'shared/header' %>
+
+<div class='container-fluid p-5'>
+
+  <div class='d-flex flex-row flex-wrap'>
+    <% @politicians.each do |politician| %>
+      <div class='d-flex flex-column align-items-center p-1'>
+        <%= image_tag politician.picture, class: 'img-thumbnail', style: 'width:15vw' %><br>
+        
+        <%= link_to politician.name, politician_path(politician) %>
+        Gastos totais: <%=format_currency(politician.total_expenses)%><br><br><br>
+      </div>
+    <% end %>
+  </div>
+
+</div>

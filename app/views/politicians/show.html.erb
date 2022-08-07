@@ -1,19 +1,54 @@
-<img src='<%= @politician.picture %>'>
+<%= render partial: 'shared/header' %>
 
-<%= @politician.name %><br>
-Total: <%= format_currency(@politician.total_expenses) %><br>
-Maior despesa: <%= format_currency(@politician.biggest_expense.net_value) %> no dia <%=@politician.biggest_expense.generation_date.strftime('%d/%m/%Y')%><br>
+<div class='container-fluid p-5'>
+  <div class='d-flex mb-4'>
+    <%= image_tag @politician.picture, class: 'img-thumbnail', style: 'width:20vw' %><br>
+    <div class='p-2'>
+      <h1 class='mb-5'><%= @politician.name %></h1>
+      <h3>Partido: <%= @politician.political_party.name %></h3>
+      <h3>CPF: <%= @politician.cpf %></h3>
+      <h3>Carteira: <%= @politician.wallet %></h3>
+      <h3>Registro: <%= @politician.registration_id %></h3>
+      <h3>Legislatura: <%= @politician.legislature.year %></h3>
+      <h3>Gastos Totais: <%= format_currency(@politician.total_expenses) %></h3>
+      <h3>
+        Maior despesa: <%= format_currency(@politician.biggest_expense.net_value) %> 
+        no dia <%= @politician.biggest_expense.generation_date.strftime('%d/%m/%Y') %> 
+        com <%= @politician.biggest_expense.provider.name %>
+      </h3>
+    </div>
+  </div>
 
-<%= line_chart @politician.expenses.group_by_day(:generation_date).sum(:net_value), xtitle: 'Day', ytitle: 'Amount', download: true, height: '500px' %>
-<%= bar_chart @politician.expenses.includes(:expense_type).group('expense_types.description').sum(:net_value) %>
 
-<% @expenses.each do |expense| %>
-  Liquido: <%= format_currency(expense.net_value) %> - 
-  Data de emissao: <%= expense.generation_date.strftime('%d/%m/%Y') %> - 
-  Fornecedor: <%= expense.provider.name.titleize %>
-  <% if expense.document_url.present? %>
-     - <%= link_to 'Boleto', expense.document_url, target: :_blank %>
-  <% end %>
-  <br>
-<% end %>
+  <div class='mb-5'>
+    <%= line_chart @politician.expenses.group_by_day(:generation_date).sum(:net_value), download: true, title: 'Gastos diários' %>
+  </div>
+  <div class='mb-5'>
+    <%= bar_chart @politician.expenses.includes(:expense_type).group('expense_types.description').sum(:net_value), download: true, title: 'Tipos de Gastos' %>
+  </div>
 
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Gasto Líquido</th>
+        <th scope="col">Data</th>
+        <th scope="col">Fornecedor</th>
+        <th scope="col">Comprovante</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @expenses.each do |expense| %>
+        <tr>
+          <th scope="row"><%= format_currency(expense.net_value) %></th>
+          <td><%= expense.generation_date.strftime('%d/%m/%Y') %></td>
+          <td><%= expense.provider.name.titleize %></td>
+          <% if expense.document_url.present? %>
+            <td><%=link_to 'Link', expense.document_url, target: :_blank%></td>
+          <% else %>
+            <td>Sem Comprovante</td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
