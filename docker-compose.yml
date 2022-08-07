@@ -12,6 +12,7 @@ services:
   web:
     depends_on:
       - 'postgres'
+      - 'redis'
     build:
       context: .
     ports:
@@ -25,7 +26,34 @@ services:
       - cache:/cache
     env_file:
       - '.env.docker'
+    environment:
+      - REDIS_URL=redis://redis:6379/1
+  redis:
+    image: 'redis:5-alpine'
+    command: redis-server
+    ports:
+      - '6379:6379'
+    volumes:
+      - 'redis:/data'
+  sidekiq:
+    depends_on:
+      - 'web'
+      - 'postgres'
+      - 'redis'
+    build: .
+    command: bundle exec sidekiq -C config/sidekiq.yml
+    volumes:
+      - '.:/projeto'
+      - '/projeto/tmp' # don't mount tmp directory
+    environment:
+      - RAILS_ENV=development
+      - REDIS_URL=redis://redis:6379/1
+      - TOKEN_EXPIRATION=86400
+      - DEVISE_JWT_SECRET_KEY=123456
+      - DATABASE_HOST=postgres
+      - MAILER_HOST=localhost:3000
 volumes:
   postgres_data:
   bundle:
   cache:
+  redis:
