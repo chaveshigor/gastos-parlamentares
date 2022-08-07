@@ -7,7 +7,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :politicians, only: %i[index show]
+  resources :politicians, only: %i[index show] do
+    collection do
+      delete 'destroy_all'
+    end
+  end
 
   root to: 'politicians#index'
 end
