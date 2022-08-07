@@ -12,12 +12,22 @@
   basta você fazer o download do arquivo no <a href='https://dadosabertos.camara.leg.br/swagger/api.html#staticfile' target='_blank'>Portal da Transparência</a> 
   em formato CSV e, em seguida, fazer o upload desse arquivo no botão abaixo.</p>
 
-  <div class='mt-5'>
+  <div class='mt-5' id='uploadDataDiv'>
     <%= form_with url: uploader_csv_uploads_path, multipart: true do |form| %>
       <div class='border border-dark rounded p-2'>
-        <%= file_field_tag :csv_file, required: true %>
-        <%= form.submit 'Enviar', class: 'btn btn-dark' %>
+        <%= file_field_tag :csv_file, required: true, id: 'fileField' %>
+        <%= form.submit 'Enviar', class: 'btn btn-dark', id: 'sendDataBtt' %>
       </div>
     <% end %>
   </div>
+
+  <div id='loading-div' style='display:none'>
+    <div class='spinner-border' role='status'>
+      <span class="sr-only"></span>
+    </div>
+    <span>Aguarde, os dados estão sendo processados pelo sistema. Você será redirecionado quando tudo estiver pronto!</span>
+  </div>
+
 </div>
+
+<%= javascript_pack_tag 'loadNewData'%>
