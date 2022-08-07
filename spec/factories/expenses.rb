@@ -13,7 +13,7 @@ FactoryBot.define do
     year { Random.rand(2018...2023) }
     installment_number { 1 }
     lot_number { Random.rand(10**5).to_s }
-    expense_type { build(:expense_type) }
+    expense_type { build(:expense_type, :with_specification) }
     provider { build(:provider) }
 
     trait :with_passanger do
