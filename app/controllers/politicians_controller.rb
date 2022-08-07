@@ -20,6 +20,6 @@ class PoliticiansController < ApplicationController
   end
 
   def set_query
-    @query = Politician.search(params[:query])
+    @query = Politician.ransack(params[:query])
   end
 end
