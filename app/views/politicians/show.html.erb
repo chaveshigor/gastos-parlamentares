@@ -14,7 +14,7 @@
       <h3>
         Maior despesa: <%= format_currency(@politician.biggest_expense.net_value) %> 
         no dia <%= @politician.biggest_expense.generation_date.strftime('%d/%m/%Y') %> 
-        com <%= @politician.biggest_expense.provider.name %>
+        com <%= @politician.biggest_expense.provider.name.titleize %>
       </h3>
     </div>
   </div>
