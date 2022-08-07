@@ -1,3 +1,14 @@
 // Place all the styles related to the Politicians controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.politician {
+  .politician-div {
+    transition: .2s;
+    z-index: 2;
+  }
+
+  .politician-div:hover {
+    transform: scale(1.1);
+  }
+}

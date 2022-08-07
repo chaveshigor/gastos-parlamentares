@@ -1,6 +1,6 @@
 <%= render partial: 'shared/header' %>
 
-<div class='container-fluid p-5'>
+<div class='container-fluid p-5 politician'>
   <div class='row'>
     <div class='col-md-4 col-12'>
       <%= search_form_for @query do |f| %>
@@ -16,7 +16,7 @@
   </div>
   <div class='d-flex flex-row flex-wrap'>
     <% @politicians.each do |politician| %>
-      <div class='d-flex flex-column align-items-center p-1'>
+      <div class='d-flex flex-column align-items-center p-1 politician-div'>
         <%= image_tag politician.picture, class: 'img-thumbnail', style: 'width:15vw' %><br>
         
         <%= link_to politician.name, politician_path(politician) %>
