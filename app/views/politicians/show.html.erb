@@ -2,6 +2,10 @@
 
 <%= @politician.name %><br>
 Total: <%= format_currency(@politician.total_expenses) %><br>
+Maior despesa: <%= format_currency(@politician.biggest_expense.net_value) %> no dia <%=@politician.biggest_expense.generation_date.strftime('%d/%m/%Y')%><br>
+
+<%= line_chart @politician.expenses.group_by_day(:generation_date).sum(:net_value), xtitle: 'Day', ytitle: 'Amount', download: true, height: '500px' %>
+<%= bar_chart @politician.expenses.includes(:expense_type).group('expense_types.description').sum(:net_value) %>
 
 <% @expenses.each do |expense| %>
   Liquido: <%= format_currency(expense.net_value) %> - 
