@@ -32,7 +32,7 @@
 en:
   csv_uploads:
     upload_error_message: 'Invalid file. The file needs to be a csv file!'
-    upload_success_message: 'Success!!! Now you need to wait some minutes, your file are being proccessed by the system!'
+    upload_success_message: 'Success!!! Your upload is finished!'
     destroy_error_message: 'Your destroy solicitation could not be proccessed by the system. Try again later.'
     destroy_success_message: 'Your destroy solicitation are being proccessed by the system. In some moments the data will be destroyed.'
     upload_needed: 'You need to upload a file.'
