@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Politician, type: :model do
-  let!(:politician) { create(:politician) }
+  let!(:politician) { create(:politician, :with_expenses) }
 
   describe 'associations' do
     it { should belong_to(:legislature) }
@@ -24,6 +24,12 @@ RSpec.describe Politician, type: :model do
   describe '#picture' do
     it 'return politician picture url' do
       expect(politician.picture).to eq("https://www.camara.leg.br/internet/deputado/bandep/#{politician.registration_id}.jpg")
+    end
+  end
+
+  describe '#total_expenses' do
+    it 'return politician total_expenses' do
+      expect(politician.total_expenses).to eq(politician.expenses.pluck(:net_value).sum)
     end
   end
 end
