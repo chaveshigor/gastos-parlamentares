@@ -4,8 +4,7 @@ class PoliticiansController < ApplicationController
   before_action :set_query, only: [:index]
 
   def index
-    @politicians = params[:query].blank? ? Politician.all : @query.result
-    @politicians = @politicians.order(name: :asc)
+    @politicians = ::Politicians::FindPoliticiansQuery.new(params, @query).run
 
     if @politicians.blank?
       flash[:notice] = t('csv_uploads.upload_needed')
