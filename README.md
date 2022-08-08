@@ -1,5 +1,5 @@
 ## Link heroku
-COLOCAR LINK AQUI
+https://gastos-de-parlamentares.herokuapp.com/csv_uploads
 
 
 ## Requisitos Obrigatórios
@@ -56,8 +56,10 @@ COLOCAR LINK AQUI
 
 ## Cobertura de código por testes
 - Para verificação da cobertura de código foi utilizada a gem simplecov
-- Print do relatório contendo cobertura de código:
-COLOCAR PRINT AQUI
+- Print do relatório contendo cobertura de código (97.53%):
+![Screenshot from 2022-08-08 13-14-19](https://user-images.githubusercontent.com/34657544/183464395-4d386ea2-69be-498c-94f4-efa45163d163.png)
+
 
 ## Modelagem do BD
-COLOCAR PRINT AQUI
+![Screenshot from 2022-08-08 13-13-29](https://user-images.githubusercontent.com/34657544/183464351-fbcb2581-b09b-45a1-99b8-865af3d97785.png)
+
