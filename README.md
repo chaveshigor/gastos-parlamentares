@@ -1,47 +1,63 @@
-# Ranking dos gastos dos Deputados
-
-Estamos muito felizes que você tenha chegado nessa etapa do nosso processo seletivo, para essa fase, desejamos que você resolva um desafio. Nosso desafio consiste em analisar alguns dados disponibilizados pelo Câmara dos Deputados relativos aos gastos dos parlamentares. A ideia é descobrir quem, do seu estado, está gastando mais e exibir de forma resumida esses principais gastos.
-
-## Descrição do desafio
-
-Você já ouviu falar da CEAP? A Cota para o Exercício da Atividade Parlamentar, custeia as despesas do mandato, como passagens aéreas e conta de celular. Algumas são reembolsadas, como as com os Correios, e outras são pagas por débito automático, como a compra de passagens. Nos casos de reembolso, os deputados têm três meses para apresentar os recibos. O valor mensal não utilizado fica acumulado ao longo do ano. Por esse motivo, em alguns meses o valor gasto pode ser maior que a média mensal. (Fonte: [Portal da Câmara dos Deputados](https://www2.camara.leg.br/transparencia/acesso-a-informacao/copy_of_perguntas-frequentes/cota-para-o-exercicio-da-atividade-parlamentar)). Através do portal da transparência, nós temos acesso a essas despesas e podemos saber como e onde os políticos estão gastando.
-
-## Base de dados e explicações complementares
-
-- [Fonte de dados (pegar o referente ao ano 2021 em formato CSV)](https://dadosabertos.camara.leg.br/swagger/api.html#staticfile)
-- [Explicação dos campos do arquivo CSV](https://www2.camara.leg.br/transparencia/cota-para-exercicio-da-atividade-parlamentar/explicacoes-sobre-o-formato-dos-arquivos-xml)
-- Ignorar linhas que não tenham no campo `sgUF` o estado que você mora. O objetivo do trabalho é focar apenas no seu estado;
-- Considerar para fins de cálculos de despesa, o campo `vlrLiquido`. Esse é o valor que de fato foi debitado da cota do candidato;
-- Dica para pegar a foto do político: **http://www.camara.leg.br/internet/deputado/bandep/{ideCadastro}.jpg**
+## Link heroku
+COLOCAR LINK AQUI
 
 
 ## Requisitos Obrigatórios
-- Possibilitar o upload do arquivo;
-- Organizar os dados extraidos do arquivo em tabelas no banco de dados;
-- Listagem dos deputados do seu estado;
-- Mostrar o somatório dos seus gastos;
-- Listar as despesas, mostrando a data(`datEmissao`), estabelecimento(`txtFornecedor`), valor(`vlrLiquido`), e link para a nota(`urlDocumento`);
-- Destacar a maior despesa do candidato;
-- Usar o framework Rails (utilize esse repositório como base);
-- Ter uma cobertura de código;
+- [x] Possibilitar o upload do arquivo;
+- [x] Organizar os dados extraidos do arquivo em tabelas no banco de dados;
+- [x] Listagem dos deputados do seu estado;
+- [x] Mostrar o somatório dos seus gastos;
+- [x] Listar as despesas, mostrando a data(`datEmissao`), estabelecimento(`txtFornecedor`), valor(`vlrLiquido`), e link para a nota(`urlDocumento`);
+- [x] Destacar a maior despesa do candidato;
+- [x] Usar o framework Rails (utilize esse repositório como base);
+- [x] Ter uma cobertura de código;
 
-# Requisitos bônus
-Esses requisitos não são obrigatórios, mas serão levados em consideração como pontos extras no momento da avaliação.
+## Funcionalidades
+- Recebe upload de arquivo CSV contendo dados de gastos de parlamentares
+- Tratamento de dados para popular tabelas no banco de dados
+- Captura de dados apenas de parlamentares do estado do RJ
+- Listagem de todos os parlamentares com opções de:
+  - Ordenação por maiores gastos
+  - Ordenação por nome
+  - Filtro por nome
+- Exibição de detalhes de gastos de parlamentar:
+  - Maior gasto
+  - Dados pessoais (cpf, partido...)
+  - Gráfico exibindo Gastos x Dia
+  - Gráfico exibindo Gasto x Categoria
+  - Download de gráficos
+  - Tabela contendo todos os gastos referentes ao parlamentar
+- Deleção de todos os dados armazenados atualmente
 
-- Exibir gráficos para melhorar a visualização dos gastos;
-- Aplicação hospedada no Heroku, AWS ou similares;
-- Evitar N + 1 nas queries;
-- Organizar estrutura do projeto utilizando padrões de projetos;
+## Estratégia para prevenção a queries N + 1
+- Foi utilizada a gem bullet, que tem como propósito a detecção de queries N + 1, facilitando suas identificações e correções.
 
-# Critérios de avaliação
+## Estratégia de implementação de processamento em background
+- Processamento para popular dados do CSV: Foi optado por não utilizar processamento em background em primeiro momento pelo fato da impossibilidade de se enviar um retorno ao usuário sobre o status da operação de população dos dados. Essa impossibilidade se deve ao fato de não se possuir nenhum tipo de contato(email, telefone...) para retornar um feedback ao usuário.
 
-- Organização do projeto: Avalia a estrutura do projeto, documentação e uso de controle de versão;
-- Coerência: Avalia se os requisitos foram atendidos;
-- Boas práticas: Avalia se o projeto segue boas práticas de desenvolvimento, incluindo segurança e otimização;
-- Criatividade: Avalia o quanto você "pensou fora da caixa", levando em conta soluções criativas para os problemas levantados;
+- Deleção de dados atuais: Foi optado por utilizar processamento em background nesse caso por este ser um evento de menor prioridade, não tendo problema o não envio de um feedback ao usuário, já que o usuário pode simplesmente recarregar a página para verificar se a operação foi efetuada.
 
-O desafio deve ser entregue nos passando a URL de seu repositório. Fique a vontade caso queira incrementar o projeto com outras features não listadas aqui, iremos levar em consideração também!
+# Instruções para executar o projeto
 
-Qualquer dúvida em relação ao desafio, responderemos por e-mail.
+### Dependências:
+- Ruby
+- Ruby on Rails
+- Yarn
+- Docker
+- Docker Compose
 
-Bom trabalho!
+### Executar:
+- Clonar o projeto
+- Executar o comando `yarn install`
+- Executar o comando `bundle install`
+- Executar o comando `docker-compose build`
+- Executar o comando `docker-compose up`
+- Execução de testes `bundle exec rspec`
+
+## Cobertura de código por testes
+- Para verificação da cobertura de código foi utilizada a gem simplecov
+- Print do relatório contendo cobertura de código:
+COLOCAR PRINT AQUI
+
+## Modelagem do BD
+COLOCAR PRINT AQUI
