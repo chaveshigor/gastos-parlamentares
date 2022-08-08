@@ -12,13 +12,25 @@
 
   <body>
     <% if notice %>
-      <p class="alert alert-success position-absolute top-0 end-0 m-3"><%= notice %>
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <p id='success-div' class="alert alert-success position-absolute top-0 end-0 m-3"><%= notice %>
+        <button 
+          onClick='document.getElementById("success-div").style.display = "none"'
+          class="close"
+          style="background-color:transparent"
+          data-dismiss="alert"
+          aria-label="close"
+        >&times;</button>
       </p>
     <% end %>
     <% if alert %>
-      <p class="alert alert-danger position-absolute top-0 end-0 m-3"><%= alert %>
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <p id='alert-div' class="alert alert-danger position-absolute top-0 end-0 m-3"><%= alert %>
+        <button
+          onClick='document.getElementById("alert-div").style.display = "none"'
+          class="close"
+          style="background-color:transparent"
+          data-dismiss="alert"
+          aria-label="close"
+        >&times;</button>
       </p>
     <% end %>
     <%= yield %>
