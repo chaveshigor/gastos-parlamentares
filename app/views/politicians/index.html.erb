@@ -9,6 +9,7 @@
             <span class="input-group-text" id="inputGroup-sizing-default">Nome</span>
           </div>
           <%= f.search_field :name_cont, class: 'form-control', aria_label: 'Default' %>
+          <%= select_tag(:order_by, options_for_select([['Ordenar por', :name], ['Nome', :name], ['Gastos', :expenses]]), class: 'form-select') %>
           <%= f.submit 'Buscar', class: 'btn btn-dark' %>
         </div>
       <% end %>
