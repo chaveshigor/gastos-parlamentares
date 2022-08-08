@@ -7,8 +7,9 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+import { $ } from "@rails/ujs"
 import "chartkick/chart.js"
-import '../js/bootstrap_js_files.js'
+import '../js/bootstrap_js_files.js';
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -17,3 +18,12 @@ import '../js/bootstrap_js_files.js'
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+require("bootstrap");
+import "../stylesheets/application";
+document.addEventListener("turbolink:load", function() {
+  $(function() {
+    $(['data-toggle="tooltip"']).tooltip()
+    $(['data-toggle="popover"']).popover()
+  })
+});

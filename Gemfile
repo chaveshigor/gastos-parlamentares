@@ -18,7 +18,7 @@ gem 'redis'
 gem 'sass-rails', '>= 6'
 gem 'sidekiq'
 gem 'turbolinks', '~> 5'
-gem 'webpacker', '~> 5.0'
+gem 'webpacker', '~> 5.4.3'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
