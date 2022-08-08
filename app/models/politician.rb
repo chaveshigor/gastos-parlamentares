@@ -8,6 +8,9 @@ class Politician < ApplicationRecord
   validates_presence_of :name, :uf
   validates_uniqueness_of :cpf, :registration_id, :wallet
 
+  scope :order_by_expenses, -> { joins(:expenses).group('politicians.id').order('SUM(expenses.net_value) desc') }
+  scope :order_by_name, -> { order(name: :asc) }
+
   def picture
     "https://www.camara.leg.br/internet/deputado/bandep/#{registration_id}.jpg"
   end
