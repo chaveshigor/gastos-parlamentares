@@ -43,8 +43,8 @@ https://gastos-de-parlamentares.herokuapp.com/csv_uploads
 # Instruções para executar o projeto
 
 ### Dependências:
-- Ruby
-- Ruby on Rails
+- Ruby - 2.7.1
+- Ruby on Rails - 6.0.3
 - Yarn
 - Docker
 - Docker Compose
