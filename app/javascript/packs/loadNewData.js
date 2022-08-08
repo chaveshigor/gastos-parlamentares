@@ -11,7 +11,4 @@ btt.addEventListener('click', () => {
     loadingDiv.style.alignItems = 'center';
     uploadDataDiv.style.display = 'none';
   };
-
-  console.log(fileField.value, '<<<<<<');
-  //console.log(uploadFileForm.checkValidity())
 });
