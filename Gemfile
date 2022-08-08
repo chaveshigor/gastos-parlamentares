@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.1'
 
+gem 'bootstrap-sass'
 gem 'chartkick'
 gem 'dotenv-rails'
 gem 'groupdate'
@@ -17,7 +18,8 @@ gem 'redis'
 gem 'sass-rails', '>= 6'
 gem 'sidekiq'
 gem 'turbolinks', '~> 5'
-gem 'webpacker', '~> 4.0'
+gem 'webpacker', '~> 5.0'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

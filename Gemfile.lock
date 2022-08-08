@@ -66,9 +66,14 @@ GEM
       zeitwerk (~> 2.2, >= 2.2.2)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
+    autoprefixer-rails (10.4.7.0)
+      execjs (~> 2)
     bindex (0.8.1)
     bootsnap (1.13.0)
       msgpack (~> 1.2)
+    bootstrap-sass (3.4.1)
+      autoprefixer-rails (>= 5.2.1)
+      sassc (>= 2.0.0)
     builder (3.2.4)
     bullet (7.0.2)
       activesupport (>= 3.0.0)
@@ -99,6 +104,7 @@ GEM
       dotenv (= 2.7.6)
       railties (>= 3.2)
     erubi (1.11.0)
+    execjs (2.8.1)
     factory_bot (5.2.0)
       activesupport (>= 4.2.0)
     factory_bot_rails (5.2.0)
@@ -222,6 +228,7 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    semantic_range (3.0.0)
     shoulda-matchers (5.1.0)
       activesupport (>= 5.2.0)
     sidekiq (6.5.3)
@@ -263,10 +270,11 @@ GEM
       nokogiri (~> 1.6)
       rubyzip (>= 1.3.0)
       selenium-webdriver (~> 4.0)
-    webpacker (4.3.0)
-      activesupport (>= 4.2)
+    webpacker (5.4.3)
+      activesupport (>= 5.2)
       rack-proxy (>= 0.6.1)
-      railties (>= 4.2)
+      railties (>= 5.2)
+      semantic_range (>= 2.3.0)
     websocket (1.2.9)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
@@ -281,6 +289,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.4.2)
+  bootstrap-sass
   bullet
   byebug
   capybara (>= 2.15)
@@ -311,7 +320,7 @@ DEPENDENCIES
   tzinfo-data
   web-console (>= 3.3.0)
   webdrivers
-  webpacker (~> 4.0)
+  webpacker (~> 5.0)
 
 RUBY VERSION
    ruby 2.7.1p83
